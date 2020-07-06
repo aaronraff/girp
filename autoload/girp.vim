@@ -3,7 +3,13 @@
 function! girp#concatFoundLine(elts)
     let res = ""
     for e in a:elts
-        let res = res . ":" . e
+        if res == ""
+            " Don't add in the semi-colon or else we end up with an extra one
+            " at the beginning of the line
+            let res = e
+        else
+            let res = res . ":" . e
+        endif
     endfor
     
     return res
