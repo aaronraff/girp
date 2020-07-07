@@ -17,3 +17,9 @@ Just use it like you would `git grep`! It just calls `git grep -n ...` under the
 :Girp My-Search-Term
 :Girp -i my-search-term
 ```
+
+You can also use :GirpCurrentWord to search for the word under the cursor. It can be handy to create mapping for this in normal mode.
+
+```
+nnoremap <leader>g :GirpCurrentWord<CR>
+```

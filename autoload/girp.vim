@@ -33,6 +33,11 @@ function! girp#gatherGrepResults(args)
     return res
 endfunction
 
+function! girp#populateAndOpenQuickfix(list)
+    call setqflist(a:list, "r")
+    execute "copen"
+endfunction
+
 function! girp#Girp(...)
     let args = ""
     for arg in a:000
@@ -40,6 +45,12 @@ function! girp#Girp(...)
     endfor
 
     let findings = girp#gatherGrepResults(args)
-    call setqflist(findings, "r")
-    execute "copen"
+    call girp#populateAndOpenQuickfix(findings)
 endfunction 
+
+function! girp#GirpCurrentWord()
+    let currentWord = expand("<cword>")
+    echom currentWord
+    let findings = girp#gatherGrepResults(currentWord)
+    call girp#populateAndOpenQuickfix(findings)
+endfunction
