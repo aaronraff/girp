@@ -50,7 +50,6 @@ endfunction
 
 function! girp#GirpCurrentWord()
     let currentWord = expand("<cword>")
-    echom currentWord
     let findings = girp#gatherGrepResults(currentWord)
     call girp#populateAndOpenQuickfix(findings)
 endfunction
