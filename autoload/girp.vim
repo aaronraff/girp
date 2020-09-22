@@ -4,7 +4,7 @@ function! girp#concatFoundLine(elts)
     let res = ""
     for e in a:elts
         if res == ""
-            " Don't add in the semi-colon or else we end up with an extra one
+            " Don't add in the colon or else we end up with an extra one
             " at the beginning of the line
             let res = e
         else
@@ -16,7 +16,7 @@ function! girp#concatFoundLine(elts)
 endfunction
 
 function! girp#gatherGrepResults(args)
-    let findings =  systemlist("git grep -n " . a:args)
+    let findings = systemlist("git grep -n " . a:args)
     let res = []
 
     for finding in findings
