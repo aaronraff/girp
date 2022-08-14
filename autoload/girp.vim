@@ -1,11 +1,11 @@
-" Some results may look have ':'s in them. If so, they will be split up and
+" Some results may have ':'s in them. If so, they will be split up and
 " need to be joined back together.
 function! girp#concatFoundLine(elts)
     let res = ""
     for e in a:elts
         if res == ""
             " Don't add in the colon or else we end up with an extra one
-            " at the beginning of the line
+            " at the beginning of the line.
             let res = e
         else
             let res = res . ":" . e
